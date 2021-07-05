@@ -7,9 +7,10 @@ var engine, world;
 var box1, pig1;
 var backgroundImg,platform;
 var bird, slingShot;
-
+//var sling3;
 function preload() {
     backgroundImg = loadImage("sprites/bg.png");
+    //sling3 = loadImage("sprites/sling3.png");
 }
 
 function setup(){
@@ -36,14 +37,15 @@ function setup(){
     log4 = new Log(760,120,150, PI/7);
     log5 = new Log(870,120,150, -PI/7);
 
-    bird = new Bird(100,100);
+    bird = new Bird(200,50);
 
     //log6 = new Log(230,180,80, PI/2);
-    slingshot = new SlingShot(bird.body,{x:200, y:100});
+    slingshot = new SlingShot(bird.body,{x:200, y:50});
 }
 
 function draw(){
     background(backgroundImg);
+    text(mouseX+","+mouseY, mouseX, mouseY);
     Engine.update(engine);
     strokeWeight(4);
     box1.display();
@@ -69,6 +71,24 @@ function draw(){
 
 function mouseDragged(){
     Matter.Body.setPosition(bird.body, {x: mouseX , y: mouseY});
+    
+    /*var pointA = bird.body.position
+    var pointBx = 200;
+    var pointBy = 50;
+    
+        if(pointA.x<220){
+            strokeWeight(8);
+            stroke(48, 22, 8);
+            line(pointA.x - 20, pointA.y, pointBx - 10, pointBy);
+            line(pointA.x - 20, pointA.y, pointBx + 30, pointBy - 3);
+            image(sling3, pointA.x - 30, pointA.y - 10, 15, 30);
+        }else{
+            strokeWeight(5);
+            stroke(48, 22, 8);
+            line(pointA.x + 25, pointA.y, pointBx + 20, pointBy);
+            line(pointA.x + 25, pointA.y, pointBx - 25, pointBy - 3);
+            image(sling3, pointA.x + 25, pointA.y - 10, 15, 30);
+        }*/
 }
 
 
